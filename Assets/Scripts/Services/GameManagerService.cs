@@ -1,21 +1,36 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class GameManager : IService
+public class GameManagerService : IService
 {
     // Intentionally left blank for candidate implementation.
     // Needs to be attached to ServiceLocator
+    public BaseScene CurrentScene { get; private set; }
+
+    public UnityEvent OnMatchReady { get; private set; } = new();
+
+    public UnityEvent OnUpdate { get; private set; } = new();
+
     public string GetServiceName()
     {
-        throw new System.NotImplementedException();
+        return nameof(GameManagerService);
     }
 
     public void Initialize()
     {
-        throw new System.NotImplementedException();
+        CurrentScene = Object.FindAnyObjectByType<BaseScene>();
+        CurrentScene.Initialize();
+
+        CurrentScene.OnUpdate.AddListener(Update);
+    }
+
+    private void Update()
+    {
+        OnUpdate.Invoke();
     }
 
     public void Shutdown()
     {
-        throw new System.NotImplementedException();
+        CurrentScene.OnUpdate.RemoveListener(Update);
     }
 }
