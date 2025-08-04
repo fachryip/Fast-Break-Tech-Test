@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DefaultPlayerMovement
   m_EditorClassIdentifier: 
   MovementSpeed: 10
-  RotationSpeed: 180
+  RotationSpeed: 25
