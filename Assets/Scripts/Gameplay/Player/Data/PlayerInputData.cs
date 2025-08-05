@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class InputData : MonoBehaviour
+public class PlayerInputData : MonoBehaviour
 {
     public bool IsLeftPressed;
     public bool IsRightPressed;

@@ -6,7 +6,8 @@
 public class CourtSpecification : ScriptableObject
 {
     public int MaxPlayerCount;
-    public Location[] PlayerLocations;
+    public Location[] PlayerSpawnLocations;
+    public Location BallSpawnLocation;
 
     public GameObject PlayerPrefab;
     public GameObject BallPrefab;

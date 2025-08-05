@@ -13,12 +13,12 @@ public class PlayerInput : IPlayerInput
     public UnityEvent OnPassClicked { get; private set; } = new();
     public UnityEvent<Vector2> OnMove { get; private set; } = new();
     
-    public InputData Data { get; private set; }
+    public PlayerInputData Data { get; private set; }
 
     public PlayerInput(PlayerController player)
     {
         _player = player;
-        Data = _player.gameObject.AddComponent<InputData>();
+        Data = _player.gameObject.AddComponent<PlayerInputData>();
     }
 
     public void Tick()

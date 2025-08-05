@@ -6,7 +6,6 @@ public class ClientLocalManager : IClientManager
     private bool _isReady;
 
     private GameManagerService _game;
-    private CourtSpecification _courtSpecification;
 
     public IClientController[] ActiveClients { get; private set; }
 
@@ -15,8 +14,6 @@ public class ClientLocalManager : IClientManager
         _game = ServiceLocator.Get<GameManagerService>();
         _game.OnUpdate.AddListener(Tick);
         _game.OnMatchReady.AddListener(OnMatchReady);
-
-        PreLoadObject();
     }
 
     public void Tick()
@@ -32,7 +29,8 @@ public class ClientLocalManager : IClientManager
 
     public void SpawnAllClient()
     {
-        int maxPlayerCount = _courtSpecification.MaxPlayerCount;
+        var courtSpecification = _game.CourtManager.CourtSpecification;
+        int maxPlayerCount = courtSpecification.MaxPlayerCount;
         ActiveClients = new IClientController[maxPlayerCount];
 
         // player active
@@ -46,16 +44,13 @@ public class ClientLocalManager : IClientManager
         // --
     }
 
-    private void PreLoadObject()
-    {
-        _courtSpecification = Resources.Load<CourtSpecification>(FilePath.DefaultCourtSpecification);
-    }
-
     private void SpawnClient(int index, ClientLocalInput input)
     {
+        var courtSpecification = _game.CourtManager.CourtSpecification;
+
         var client = new ClientLocalController(this, input);
-        var location = _courtSpecification.PlayerLocations[index];
-        client.SpawnPlayer(_courtSpecification.PlayerPrefab, location.Position, location.Rotation);
+        var location = courtSpecification.PlayerSpawnLocations[index];
+        client.SpawnPlayer(courtSpecification.PlayerPrefab, location.Position, location.Rotation);
 
         ActiveClients[index] = client;
     }

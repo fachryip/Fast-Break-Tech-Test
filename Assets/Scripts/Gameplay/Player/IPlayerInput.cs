@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public interface IPlayerInput : ITickable
 {
+    PlayerInputData Data { get; }
     UnityEvent OnLeftClicked { get; }
     UnityEvent OnRightClicked { get; }
     UnityEvent OnUpClicked { get; }

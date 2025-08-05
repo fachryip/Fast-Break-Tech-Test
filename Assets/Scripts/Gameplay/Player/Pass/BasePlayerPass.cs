@@ -2,5 +2,7 @@
 
 public abstract class BasePlayerPass : ScriptableObject
 {
-    public abstract void Execute(PlayerController player);
+    public float PassSpeed;
+
+    public abstract void Execute(PlayerController player, PlayerController otherPlayer, BallController ball);
 }

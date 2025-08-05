@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultCourtSpecification
   m_EditorClassIdentifier: 
   MaxPlayerCount: 4
-  PlayerLocations:
+  PlayerSpawnLocations:
   - Position: {x: -5.25, y: 0, z: -3}
     Rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
   - Position: {x: -5.25, y: 0, z: 2.5}
@@ -22,5 +22,8 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
   - Position: {x: 5.25, y: 0, z: 2.5}
     Rotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
+  BallSpawnLocation:
+    Position: {x: 0, y: 3, z: -1.47694}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
   PlayerPrefab: {fileID: 9214183132029187203, guid: 6d42da25d19de114fa8179b12d75c19a, type: 3}
   BallPrefab: {fileID: 6282742513322508525, guid: b1eb58f145b09ad45920fc0efb2a7be3, type: 3}

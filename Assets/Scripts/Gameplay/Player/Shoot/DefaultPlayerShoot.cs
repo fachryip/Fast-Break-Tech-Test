@@ -5,8 +5,19 @@
     menuName = FilePath.ScriptableObjectPath + "/Player/" + nameof(DefaultPlayerShoot))]
 public class DefaultPlayerShoot : BasePlayerShoot
 {
-    public override void Execute(PlayerController player)
+    public float Forward;
+    public float Up;
+
+    public override void Execute(PlayerController player, BallController ball)
     {
-        Debug.Log($"Player:{player.name} Shoot with {nameof(DefaultPlayerShoot)}");
+        var direction = player.transform.forward * Forward + player.transform.up * Up;
+        
+        BallTravelData travelData = new()
+        {
+            From = player.transform.position,
+            To = player.transform.position + direction,
+            Speed = ShootSpeed
+        };
+        ball.Travel(player, travelData);
     }
 }

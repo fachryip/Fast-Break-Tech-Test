@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4141123132292277995}
   - component: {fileID: 5005754495813153745}
-  - component: {fileID: 4831545997441841032}
+  - component: {fileID: 897313164272678015}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,33 +56,49 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!54 &4831545997441841032
-Rigidbody:
+--- !u!114 &897313164272678015
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770269371604185056}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d413bf4c3b58e489db5b57953d8589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1930203984196421270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7143831936226136944}
+  m_Layer: 0
+  m_Name: BallLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7143831936226136944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930203984196421270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.42, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5103693756358876292}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3984384279689552990
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,8 +110,9 @@ GameObject:
   - component: {fileID: 5103693756358876292}
   - component: {fileID: 2450623831766983790}
   - component: {fileID: 4875711557685000025}
+  - component: {fileID: 4479797330953367161}
   m_Layer: 0
-  m_Name: Visual
+  m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +132,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3071087621649440975}
+  - {fileID: 7143831936226136944}
   m_Father: {fileID: 6983420188198371553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2450623831766983790
@@ -170,6 +188,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4479797330953367161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984384279689552990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3147e11c86eab5f46ad21646ef46f7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallLocation: {fileID: 7143831936226136944}
 --- !u!1 &6787265532800802564
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,10 +297,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6983420188198371553}
   - component: {fileID: 9080779429777768767}
-  - component: {fileID: 1102505300049405810}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,19 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77c9f0e1ae483841a18804b843599bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Configuration: {fileID: 1102505300049405810}
---- !u!114 &1102505300049405810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9214183132029187203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3835f89d840a86f4f8a3bee8b4f88fa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Movement: {fileID: 11400000, guid: ff94b4b22216e5c4d9ccc232f86cdca3, type: 2}
-  Shoot: {fileID: 11400000, guid: 4350ae5426ccb7940857f648b8ce5f0d, type: 2}
-  Pass: {fileID: 11400000, guid: e428079677cf8b24fa50ba2cdbaf3b2f, type: 2}
+  _view: {fileID: 4479797330953367161}
+  _movement: {fileID: 11400000, guid: ff94b4b22216e5c4d9ccc232f86cdca3, type: 2}
+  _shoot: {fileID: 11400000, guid: 4350ae5426ccb7940857f648b8ce5f0d, type: 2}
+  _pass: {fileID: 11400000, guid: e428079677cf8b24fa50ba2cdbaf3b2f, type: 2}
+  _ballHandler: {fileID: 11400000, guid: 04a80d60150d208459ecea8f89d85fbe, type: 2}
+  _colliderEventTrigger: {fileID: 897313164272678015}

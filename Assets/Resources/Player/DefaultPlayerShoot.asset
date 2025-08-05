@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10f0a18dd1c0bf459708b6dbe46b12e, type: 3}
   m_Name: DefaultPlayerShoot
   m_EditorClassIdentifier: 
+  ShootSpeed: 6
+  Forward: 2
+  Up: 3
