@@ -25,6 +25,7 @@ public class ServiceInitializer : MonoBehaviour
 
         // Create and register services (with null checks)
         //RegisterService<GameManagerService>();
+        ServiceLocator.Register(new GameManagerService());
 
         // Add networked services if needed
         if (isNetworked)
