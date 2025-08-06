@@ -50,7 +50,7 @@ public class ClientLocalManager : IClientManager
 
         var client = new ClientLocalController(this, input);
         var location = courtSpecification.PlayerSpawnLocations[index];
-        client.SpawnPlayer(courtSpecification.PlayerPrefab, location.Position, location.Rotation);
+        client.SpawnPlayer(courtSpecification.PlayerPrefab, location.Position, location.Rotation, index);
 
         ActiveClients[index] = client;
     }

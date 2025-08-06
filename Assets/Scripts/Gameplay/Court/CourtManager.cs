@@ -9,6 +9,7 @@ public interface ICourtManager
     BallController? Ball { get; }
 
     void PrepareCourt();
+    PlayerController GetOtherPlayer(PlayerController player);
 }
 
 public class CourtManager : ICourtManager
@@ -41,6 +42,24 @@ public class CourtManager : ICourtManager
         var ballObject = Object.Instantiate(prefab, location.Position, location.Rotation);
         Ball = ballObject.GetComponent<BallController>();
         Ball.Initialize();
+    }
+
+    public PlayerController GetOtherPlayer(PlayerController player)
+    {
+        var activePlayers = _game.ClientManager.ActiveClients;
+        var maxPlayerCount = CourtSpecification.MaxPlayerCount;
+        var isLowerIndex = player.RuntimeData.Index < (maxPlayerCount / 2);
+        var from = isLowerIndex ? 0 : maxPlayerCount / 2;
+        var to = isLowerIndex ? maxPlayerCount / 2 : maxPlayerCount;
+        for (var i = from; i < to; i++)
+        {
+            if (activePlayers[i].PlayerController != player)
+            {
+                return activePlayers[i].PlayerController;
+            }
+        }
+
+        throw new System.Exception("Other player not found from active client list.");
     }
 
     ~CourtManager()

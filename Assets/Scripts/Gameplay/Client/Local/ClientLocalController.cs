@@ -28,10 +28,10 @@ public class ClientLocalController : IClientController
         }
     }
 
-    public void SpawnPlayer(GameObject playerPrefab, Vector3 position, Quaternion rotation)
+    public void SpawnPlayer(GameObject playerPrefab, Vector3 position, Quaternion rotation, int index)
     {
         var playerObject = Object.Instantiate(playerPrefab, position, rotation);
         PlayerController = playerObject.GetComponent<PlayerController>();
-        PlayerController.Initialize();
+        PlayerController.Initialize(index);
     }
 }

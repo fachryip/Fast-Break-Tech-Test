@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    [SerializeField] private DefaultBallMovement _mechanic;
+    [SerializeField] private DefaultBallMovement _movement;
     [SerializeField] private Rigidbody _rigidbody;
 
     public BallRuntimeData Data { get; private set; }
@@ -16,20 +16,20 @@ public class BallController : MonoBehaviour
 
     public void Tick()
     {
-        //_mechanic.Tick(this);
+        
     }
 
     public void TouchPlayer(PlayerController player)
     {
         Data.Empty();
         Data.CurrentPlayer = player;
+        _movement.TouchPlayer(this, player);
     }
 
     public void Travel(PlayerController player, BallTravelData travelData)
     {
         Data.Empty();
         Data.TravelData = travelData;
-        _mechanic.Travel(this, player, travelData);
-        Debug.Log($"Ball Travel Data:{travelData}");
+        _movement.Travel(this, player, travelData);
     }
 }

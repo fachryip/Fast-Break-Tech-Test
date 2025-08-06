@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c35bfb68525858428987c196c024bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mechanic: {fileID: 11400000, guid: 40cfe17b0dc52364ca66525259a3d7cf, type: 2}
+  _movement: {fileID: 11400000, guid: 40cfe17b0dc52364ca66525259a3d7cf, type: 2}
   _rigidbody: {fileID: 7378210422518997550}
 --- !u!54 &7378210422518997550
 Rigidbody:

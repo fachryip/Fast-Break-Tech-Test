@@ -19,5 +19,6 @@ public class DefaultPlayerShoot : BasePlayerShoot
             Speed = ShootSpeed
         };
         ball.Travel(player, travelData);
+        Debug.Log($"Player:{player.name} Shoot with data:{travelData} with {nameof(DefaultPlayerShoot)}");
     }
 }

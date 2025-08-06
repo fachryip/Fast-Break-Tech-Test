@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerRuntimeData : MonoBehaviour
 {
+    public int Index;
     public BallController? Ball;
 
     public bool HasBall => Ball != null;

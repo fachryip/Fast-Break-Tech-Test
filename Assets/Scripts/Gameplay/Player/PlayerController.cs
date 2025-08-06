@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, ITickable
     [SerializeField] private ColliderEventTrigger _colliderEventTrigger;
 
     private bool _isInitialize;
+    private GameManagerService _game;
 
     public PlayerView View => _view;
     public BasePlayerMovement Movement => _movement;
@@ -21,12 +22,15 @@ public class PlayerController : MonoBehaviour, ITickable
     public PlayerRuntimeData RuntimeData { get; private set; }
     public IPlayerInput Input { get; private set; }
 
-    public void Initialize()
+    public void Initialize(int index)
     {
         if (_isInitialize) return;
 
         _isInitialize = true;
+        _game = ServiceLocator.Get<GameManagerService>();
+
         RuntimeData = gameObject.AddComponent<PlayerRuntimeData>();
+        RuntimeData.Index = index;
 
         Input = new PlayerInput(this);
         Input.OnMove.AddListener(PlayerMove);
@@ -62,7 +66,9 @@ public class PlayerController : MonoBehaviour, ITickable
 
         var ball = RuntimeData.Ball;
         RuntimeData.Ball = null;
-        //Pass.Execute(this, ball);
+
+        var otherPlayer = _game.CourtManager.GetOtherPlayer(this);
+        Pass.Execute(this, otherPlayer, ball);
     }
 
     private void CollisionEnter(GameObject player, Collision collision)
